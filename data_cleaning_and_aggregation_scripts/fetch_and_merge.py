@@ -15,7 +15,7 @@ data = pd.DataFrame(PD_NA['fed_rssd'])
 
 ## drop column we dont want
 
-columns_to_drop = ['cbsa_metro', 'mutual', 'cert', 'docket', 'rssdhcr','name', 'city', 'stalp', 'zip', 'repdte','rundate','bkclass','address','namehcr', 'county','cbsa_metro_name','estymd', 'offdom', 'offfor', 'stmult', 'specgrp', 'subchaps', 'insdate', 'effdate', 'parcert', 'trust', 'regagnt', 'insagnt1', 'fdicdbs', 'fdicsupv', 'fldoff', 'fed', 'occdist', 'otsregnm', 'offoa', 'cb']
+columns_to_drop = ['inst.webaddr', 'cbsa_metro', 'mutual', 'cert', 'docket', 'rssdhcr','name', 'city', 'stalp', 'zip', 'repdte','rundate','bkclass','address','namehcr', 'county','cbsa_metro_name','estymd', 'offdom', 'offfor', 'stmult', 'specgrp', 'subchaps', 'insdate', 'effdate', 'parcert', 'trust', 'regagnt', 'insagnt1', 'fdicdbs', 'fdicsupv', 'fldoff', 'fed', 'occdist', 'otsregnm', 'offoa', 'cb']
 
 # PD_NA = PD_NA.drop(columns_to_drop, axis=1)
 # FRNLL = FRNLL.drop(columns_to_drop, axis=1)
@@ -29,7 +29,9 @@ ff = os.listdir("./raw_data/")
 
 for i in ff:
     temp = pd.read_csv("./raw_data/" + i)
-    temp = temp.drop(columns_to_drop, axis=1)
-    data = pd.merge(data, temp, on='fed_rssd')
+    temp = temp.drop(columns_to_drop, axis=1, errors='ignore')
+    cols_to_merge = temp.columns.difference(data.columns)
+    cols_to_merge = cols_to_merge.insert(0, 'fed_rssd')
+    data = pd.merge(data, temp[cols_to_merge], on='fed_rssd')
 
 data.to_csv("./merged_data/merged_data_20190331.csv")
