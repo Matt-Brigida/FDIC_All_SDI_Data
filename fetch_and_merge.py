@@ -18,9 +18,12 @@ files_to_delete = glob.glob("./raw_data/*")
 for ff in files_to_delete:
     os.remove(ff)
 
+print("Deleted Files, and starting download.  May take a minute.")
 
 ### download zip for quarter
 urllib.request.urlretrieve("https://www5.fdic.gov/sdi/Resource/AllReps/All_Reports_"+ quarter +".zip", "./raw_data/" + quarter + "data.zip")
+
+print("Downloaded zip")
 
 ### unzip
 with zipfile.ZipFile("./raw_data/" + quarter + "data.zip","r") as zip_ref:
@@ -30,8 +33,12 @@ with zipfile.ZipFile("./raw_data/" + quarter + "data.zip","r") as zip_ref:
 os.remove("./raw_data/" + quarter + "data.zip")
 os.remove("./raw_data/All_Reports_" + quarter + "_readme.htm")
 
+print("Unzipped and removed non-data files")
+
 ### make new merged data file---
 os.mkdir("./merged_data/"+ quarter +"/")
+
+print("Created " + quarter + " directory.")
 
 ## Plan: get list of IDRSSDs from one file and then use loop to merge in the rest of the files.
 
@@ -55,6 +62,8 @@ data = pd.DataFrame(PD_NA['fed_rssd'])
 ## list files in directory (will also list subdirs but there are none).
 ff = os.listdir("./raw_data/")
 
+print("Starting merge")
+
 for i in ff:
     temp = pd.read_csv("./raw_data/" + i)
     temp = temp.drop(columns_to_drop, axis=1, errors='ignore')
@@ -62,6 +71,8 @@ for i in ff:
     cols_to_merge = cols_to_merge.insert(0, 'fed_rssd')
     data = pd.merge(data, temp[cols_to_merge], on='fed_rssd')
 
-data.to_csv("./merged_data/"+ quarter +"/merged_data.csv")
+data.to_csv("./merged_data/"+ quarter +"/merged_data.csv", index=False)
 
-bank_data.to_csv("./merged_data/"+ quarter +"/bank_data.csv")
+bank_data.to_csv("./merged_data/"+ quarter +"/bank_data.csv", index=False)
+
+print("Done!")
