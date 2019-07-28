@@ -41,8 +41,11 @@ os.mkdir("./merged_data/"+ quarter +"/")
 print("Created " + quarter + " directory.")
 
 ## Plan: get list of IDRSSDs from one file and then use loop to merge in the rest of the files.
-
-PD_NA = pd.read_csv("./raw_data/All_Reports_"+ quarter +"_- PD & NA Loans Wholly or Partially US Gvmt Guaranteed.csv")
+## file changed name after 20071231
+# if int(quarter) == 20071231:
+PD_NA = pd.read_csv("./raw_data/All_Reports_"+ quarter +"_- PD & NA Loans Wholly or Partially US Gvmt Guaranteed.csv", encoding = "ISO-8859-1")
+# else:
+# PD_NA = pd.read_csv("./raw_data/All_Reports_"+ quarter +"_- Past Due and Nonaccrual Loans Wholly or Partially US Gvmt Guaranteed.csv", encoding = "ISO-8859-1")
 
 ## drop column we dont want
 
@@ -65,7 +68,7 @@ ff = os.listdir("./raw_data/")
 print("Starting merge")
 
 for i in ff:
-    temp = pd.read_csv("./raw_data/" + i)
+    temp = pd.read_csv("./raw_data/" + i, encoding = "ISO-8859-1")
     temp = temp.drop(columns_to_drop, axis=1, errors='ignore')
     cols_to_merge = temp.columns.difference(data.columns)
     cols_to_merge = cols_to_merge.insert(0, 'fed_rssd')
