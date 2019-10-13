@@ -8,7 +8,15 @@ fed_rssds <- list()
 for (q in quarters){
     tmp_data <- read_csv(paste0("../../merged_data/", q, "/bank_data.csv"))
     fed_rssds[[q]] <- tmp_data$fed_rssd
-    }
+}
+
+## Get all fed_rssds that have ever existed--------
+all_fed_rssds <- unique(unlist(fed_rssds))
+
+saveRDS(all_fed_rssds, "all_fed_rssds.rds")
+
+length(all_fed_rssds)
+#  16568
 
 ### births
 births <- list()
@@ -23,6 +31,13 @@ deaths <- list()
 for (i in 1:(length(quarters) - 1)){
     deaths[[quarters[i + 1]]] <- fed_rssds[[i]][!(fed_rssds[[i]] %in% fed_rssds[[i + 1]])]
 }
+
+## Alternative method to get all fed_rssds, get all in first quarter and add all births-------
+alt_all_fed_rssds <- unique(c(read_csv("../../merged_data/19921231/bank_data.csv")$fed_rssd, unlist(births)))
+
+length(alt_all_fed_rssds)
+# 16568
+# matches
 
 ## Vizualizations
 
