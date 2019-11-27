@@ -62,8 +62,37 @@ plot_data <- plot_data[index(plot_data) != "2012-03-31", ]
 
 names(plot_data) <- c("Births", "Deaths", "Net_Gain")
 
-plot.xts(plot_data)
+plot(plot_data, main="Births, Deaths, and Total Change", col=c(3,2,4), auto.legend=TRUE)
+legend("bottomleft", legend = c("Births", "Deaths", "Total Change"), col=c(3,2,4), lty=1, cex=.65)
+
+autoplot.zoo(plot_data)
+
+## births/death plot---make better
+pdf("births_deaths.pdf")
+plot(plot_data, main="Births (green), Deaths (red), and Total Change (blue)", col=c(3,2,4), auto.legend=TRUE, citation="by Matt Brigida")
+dev.off()
+
+
 
 cumulative_net_gain <- as.xts(cumsum(net_gain), order.by = quarter_date[-1])
 
-plot.xts(cumulative_net_gain)
+pdf("cum_change_in_num_banks.pdf")
+plot.xts(cumulative_net_gain, main="Change in the Number of US Banks")
+dev.off()
+
+## num banks first quarter
+first_quarter <- read_csv("../../merged_data/19921231/bank_data.csv")
+first_quarter_num_banks <- length(first_quarter$fed_rssd)
+## 13973
+
+## num banks last quarter
+last_quarter <- read_csv("../../merged_data/20190331/bank_data.csv")
+last_quarter_num_banks <- length(last_quarter$fed_rssd)
+## 5371
+
+last_quarter_num_banks/first_quarter_num_banks - 1
+## -0.6156158
+
+pdf("total_num_banks.pdf")
+plot.xts(first_quarter_num_banks + cumulative_net_gain, main="Total Number of US Banks")
+dev.off()
