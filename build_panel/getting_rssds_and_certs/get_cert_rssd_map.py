@@ -23,12 +23,14 @@ for i in quarters:
 fed_rssd_and_cert = {} # is a dict
 
 for i in quarters:
-    fed_rssd_and_cert[i] = pd.read_csv("./merged_data/" + str(i) + "/bank_data.csv")[['cert', 'fed_rssd']]
+    fed_rssd_and_cert[i] = pd.DataFrame(pd.read_csv("./merged_data/" + str(i) + "/bank_data.csv")[['cert', 'fed_rssd']])
 
-all_rssd_and_cert = []
-
+    
+df = pd.DataFrame()
 for i in quarters:
-    all_rssd_and_cert.append(pd.DataFrame.from_dict(fed_rssd_and_cert.get(i)))
+    df_new = fed_rssd_and_cert.get(i)
+    df = df.append(df_new, ignore_index=True)
 
+all_rssd_and_cert = df.drop_duplicates()
 
-pd.DataFrame.to_csv(all_rssd_and_cert, "./all_rssd_and_cert.csv")
+pd.DataFrame.to_csv(all_rssd_and_cert, "./build_panel/getting_rssds_and_certs/all_rssd_and_cert.csv", index=False)
