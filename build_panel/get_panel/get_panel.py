@@ -28,4 +28,4 @@ for i in quarters:
                 total_assets = total_assets.sort_index()  # sorting by index
 
 
-
+# the above method is too slow----probably because shifting and sorting the index is inefficient.  Rewriting in R with data.table.
