@@ -43,9 +43,9 @@ print("Created " + quarter + " directory.")
 ## Plan: get list of IDRSSDs from one file and then use loop to merge in the rest of the files.
 ## file changed name after 20071231
 # if int(quarter) == 20071231:
-# PD_NA = pd.read_csv("./raw_data/All_Reports_"+ quarter +"_- PD & NA Loans Wholly or Partially US Gvmt Guaranteed.csv", encoding = "ISO-8859-1")
+PD_NA = pd.read_csv("./raw_data/All_Reports_"+ quarter +"_- PD & NA Loans Wholly or Partially US Gvmt Guaranteed.csv", encoding = "ISO-8859-1")
 # else:
-PD_NA = pd.read_csv("./raw_data/All_Reports_"+ quarter +"_- Past Due and Nonaccrual Loans Wholly or Partially US Gvmt Guaranteed.csv", encoding = "ISO-8859-1")
+# PD_NA = pd.read_csv("./raw_data/All_Reports_"+ quarter +"_- Past Due and Nonaccrual Loans Wholly or Partially US Gvmt Guaranteed.csv", encoding = "ISO-8859-1")
 
 ## drop column we dont want
 

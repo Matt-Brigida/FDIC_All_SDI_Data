@@ -20,3 +20,5 @@ for (i in quarters){
 }
 
 names(panel) <- c("quarter", "rssd", "total_assets")
+
+saveRDS(panel, "./panel_just_assets.rds")
