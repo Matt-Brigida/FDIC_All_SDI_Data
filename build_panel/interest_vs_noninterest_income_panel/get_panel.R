@@ -27,13 +27,29 @@ panel <- data.table()
 ## "Extraordinary gains, net","extra","Extraordinary items and other adjustments, net of income taxes."
 ## "Net income","netinc","Net interest income plus total noninterest income plus realized gains (losses) on securities and extraordinary items, less total noninterest expense, loan loss provisions and income taxes."
 ## "Cash dividends","eqcdiv","Cash dividends paid on common and preferred stock."
+## "Interest income: Foreign office loans","ILNFOR","Total interest and fee income on loans held in foreign offices, edge and agreement subsidiaries and IBF's.    "
+## "Interest expense: Foreign office deposits","EDEPFOR","Total interest expense on deposits held in foreign offices, Edge and agreement subsidiaries and IBFs."
 
 
-
-
-
-
-
+## vector of variables-------
+variables <- c("asset",# {{{
+               "eq",
+               "intinc",
+               "eintexp",
+               "nonii",
+               "idothnii",
+               "nonix",
+               "epremagg",
+	       "IDEOTH",
+	       "idpretx",
+	       "iglsec",
+	       "itax",
+	       "ibefxtr",
+	       "extra",
+	       "netinc",
+	       "eqcdiv",
+	       "ILNFOR",
+	       "EDEPFOR")# }}}
 
 
 
