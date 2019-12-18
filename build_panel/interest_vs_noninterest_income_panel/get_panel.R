@@ -30,6 +30,18 @@ panel <- data.table()
 ## "Interest income: Foreign office loans","ILNFOR","Total interest and fee income on loans held in foreign offices, edge and agreement subsidiaries and IBF's.    "
 ## "Interest expense: Foreign office deposits","EDEPFOR","Total interest expense on deposits held in foreign offices, Edge and agreement subsidiaries and IBFs."
 
+## total deposits
+## "Total deposits","dep","The sum of all deposits including demand deposits, money market deposits, other savings deposits, time deposits and deposits in foreign offices."
+
+
+## residential mortgage loans
+## "1-4 family residential loans","lnreres","Total loans secured by 1-4 family residential properties (including revolving and open-end loans) held in domestic offices.<br>Note:Prior to 2004 the savings institutions that file a thrift financial report did not report the 1-4 family loans by the sub category first liens and second liens. The data is not available prior to this year.  Commercial banks began reporting that data in 1991"
+## "Loans secured by 1-4 family first liens","LNRERSFM","Closed-end loans secured by first liens on 1-4 family residential properties and held in domestic offices.<br><br>Note:Prior to 2004 the savings institutions that file a thrift financial report did not report the 1-4 family loans by the sub category first liens and second liens. The data is not available prior to this year.  Commercial banks began reporting that data in 1991."
+## "Loans secured by 1-4 family junior liens","LNRERSF2","Closed-end loans secured by junior liens on 1-4 family residential properties and held in domestic offices.<br><br>Note: Prior to 2004 the savings institutions that file a thrift financial report did not report the 1-4 family loans by the sub category first liens and second liens. The data is not available prior to this year.  Commercial banks began reporting that data in 1991."
+## "Home equity loans","lnreloc","Open-end loans secured by 1-4 family residential properties extended as lines of credit in domestic offices (included in total 1-4 mortgage loans)."
+## "Adjustable rate loans secured by 1-4 family residential (memoranda)","LNRERSF1","All other adjustable rate closed-end loans secured by 1-4family residential properties, secured by first liens, andheld in domestic offices Listed as memoranda only and is included in real estate 1-4 family-first liens. <br><p>This item is not available for <a href='definitions.asp?SystemForm=ID&HelpItem=tfrrpt'>TFR Reporters</a>."
+
+
 
 ## vector of variables-------
 variables <- c("asset",# {{{
@@ -49,7 +61,14 @@ variables <- c("asset",# {{{
 	       "netinc",
 	       "eqcdiv",
 	       "ILNFOR",
-	       "EDEPFOR")# }}}
+	       "EDEPFOR",
+               "dep",
+               "lnreres",
+               "LNRERSFM",
+               "LNRERSF2",
+               "lnreloc",
+               "LNRERSF1"
+               )# }}}
 
 
 
