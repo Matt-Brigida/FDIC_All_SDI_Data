@@ -52,18 +52,17 @@ panel <- data.table()
 ## "Noninterest income to average assets","noniiay","Income derived from bank services and sources other than interest bearing assets (annualized) as a percent of <a href='definitions.asp?SystemForm=ID&HelpItem=asset5'> average total assets</a>."
 ## "Noninterest expense to average assets","nonixay","Salaries and employee benefits, expenses of premises and fixed assets, and other noninterest expenses (annualized) as a percent of <a href='definitions.asp?SystemForm=ID&HelpItem=asset5'> average total assets</a>."
 ## "Loan and lease loss provision to assets","ELNATRY","The annualized provision for loans and lease losses as a percent of <a href='definitions.asp?SystemForm=ID&HelpItem=asset5'> average total assets</a> on a consolidated basis."
-"9.","Net operating income to assets","noijy","Net operating income (annualized) as a percent of <a href='definitions.asp?SystemForm=ID&HelpItem=asset5'> average total assets</a>."
-"10.","Return on assets (ROA)","roa","Net income after taxes and extraordinary items (annualized) as a percent of <a href='definitions.asp?SystemForm=ID&HelpItem=asset5'> average total assets</a>."
-"11.","Pretax return on assets","roaptx","Annualized pre-tax net income as a percent of <a href='definitions.asp?SystemForm=ID&HelpItem=asset5'> average total assets</a>.<P>Note: Includes extraordinary items and other adjustments, net of taxes."
+## "Net operating income to assets","noijy","Net operating income (annualized) as a percent of <a href='definitions.asp?SystemForm=ID&HelpItem=asset5'> average total assets</a>."
+## "Return on assets (ROA)","roa","Net income after taxes and extraordinary items (annualized) as a percent of <a href='definitions.asp?SystemForm=ID&HelpItem=asset5'> average total assets</a>."
+## "Pretax return on assets","roaptx","Annualized pre-tax net income as a percent of <a href='definitions.asp?SystemForm=ID&HelpItem=asset5'> average total assets</a>.<P>Note: Includes extraordinary items and other adjustments, net of taxes."
 ## "Return on Equity (ROE)","roe","Annualized net income as a percent of <a href='definitions.asp?SystemForm=ID&HelpItem=eq5'> average total equity</a> on a consolidated basis.     Note: If retained earnings are  negative, the ratio is shown as NA."
-"14.","Net charge-offs to loans","ntlnlsr","Gross loan and lease financing receivable charge-offs, less gross recoveries, (annualized) as a percent of <a href='definitions.asp?SystemForm=ID&HelpItem=lnlsgr5'> average total loans and lease financing receivables</a>."
-"15.","Credit loss provision to net charge-offs","elnantr","Provision for possible credit and allocated transfer risk as a percent of net charge-offs. If the denominator is less than or equal to zero, then ratio is shown as 'NA.'"
-"16.","Earnings coverage of net charge-offs (x)","iderncvr","Income before income taxes and extraordinary items and other adjustments, plus provisions for loan and lease losses and allocated transfer risk reserve, plus gains (losses) on securities not held in trading accounts (annualized) divided by net loan and lease charge-offs (annualized). This is a number of times ratio (x) not a percentage ratio (%). * if the denominator is less than or equal to zero, then ratio is shown as 'n/a. ris definition = iderncvr = chfla / ntlnlsa "
-"17.","Efficiency ratio","eeffr","Noninterest expense less amortization of intangible assets as a percent of net interest income plus noninterest income. This ratio measures the proportion of net operating revenues that are absorbed by overhead expenses, so that a lower value indicates greater efficiency."
-"18.","Assets per employee ($millions)","astempm","Total assets in millions of dollars as a percent of the number of full-time equivalent employees."
-"19.","Cash dividends to net income (ytd only)*","iddivnir","Total of all cash dividends declared (year-to-date, annualized) as a percent of net income (year-to-date, annualized). * this ratio is not available on a quarterly basis. if the denominator is less than or equal to zero, then ratio is shown as 'N/A.' RIS definition = IDDIVNIR = (EQCDIVA / NETINCA) *100"
-"20.","Earning assets to total assets ratio","ERNASTR","Interest earning assets as a percent of total assets."
-"21.","Loss allowance to loans","lnatresr","Allowance for loan and lease losses as a percent of total loan and lease financing receivables, excluding unearned income."
+## "Net charge-offs to loans","ntlnlsr","Gross loan and lease financing receivable charge-offs, less gross recoveries, (annualized) as a percent of <a href='definitions.asp?SystemForm=ID&HelpItem=lnlsgr5'> average total loans and lease financing receivables</a>."
+## "Credit loss provision to net charge-offs","elnantr","Provision for possible credit and allocated transfer risk as a percent of net charge-offs. If the denominator is less than or equal to zero, then ratio is shown as 'NA.'"
+## "Earnings coverage of net charge-offs (x)","iderncvr","Income before income taxes and extraordinary items and other adjustments, plus provisions for loan and lease losses and allocated transfer risk reserve, plus gains (losses) on securities not held in trading accounts (annualized) divided by net loan and lease charge-offs (annualized). This is a number of times ratio (x) not a percentage ratio (%). * if the denominator is less than or equal to zero, then ratio is shown as 'n/a. ris definition = iderncvr = chfla / ntlnlsa "
+## "Efficiency ratio","eeffr","Noninterest expense less amortization of intangible assets as a percent of net interest income plus noninterest income. This ratio measures the proportion of net operating revenues that are absorbed by overhead expenses, so that a lower value indicates greater efficiency."
+## "Assets per employee ($millions)","astempm","Total assets in millions of dollars as a percent of the number of full-time equivalent employees."
+## "Earning assets to total assets ratio","ERNASTR","Interest earning assets as a percent of total assets."
+## "Loss allowance to loans","lnatresr","Allowance for loan and lease losses as a percent of total loan and lease financing receivables, excluding unearned income."
 "22.","Loan loss allowance to noncurrent loans","lnresncr","Allowance for loan and lease losses as a percent of noncurrent loans and leases."
 "23.","Noncurrent assets plus other real estate owned to assets","nperfv","Noncurrent assets as a percent of total assets.     Noncurrent assets are defined as assets that are past due 90 days or more plus assets placed in nonaccrual status plus other real estate owned (excluding direct and indirect investments in real estate)."
 "24.","Noncurrent loans to loans","nclnlsr","Total noncurrent loans and leases, Loans and leases 90 days or more past due plus loans in nonaccrual status,  as a percent of gross loans and leases."
@@ -80,6 +79,9 @@ panel <- data.table()
 "35.","Average earning assets","ernast5","The average of all loans and other investments that earn interest or dividends. Averages are calculated as follows: Year-to-date averages: March reporting period - (December earning assets + March earning assets) / 2 June reporting period - (December earning assets + March earning assets + June earning assets) / 3 September reporting period - (December earning assets + March earning assets + June earning assets + September earning assets) / 4 December reporting period - (Previous December earning assets + March earning assets + June earning assets + September earning assets + December earning assets) / 5 Quarterly averages: All reporting periods  (Previous quarter earning assets + current quarter earning assets) / 2 "
 "36.","Average equity","eq5","The average of total equity capital (includes preferred and common stock, surplus and undivided profits). Averages are calculated as follows: Year-to-date averages: March reporting period - (December equity + March equity) / 2 June reporting period - (December equity + March equity + June equity) / 3 September reporting period - (December equity + March equity + June equity + September equity) / 4 December reporting period - (Previous December equity + March equity + June equity + September equity + December equity) / 5 Quarterly averages: All reporting periods  (Previous quarter equity + current quarter equity) / 2 "
 "37.","Average total loans","LNLSGR5","The average of total loans and lease financing receivables, net of unearned income. Averages are calculated as follows: Year-to-date averages: March reporting period - (December total loans + March total loans) / 2 June reporting period - (December total loans + March total loans + June total loans) / 3 September reporting period - (December total loans + March total loans + June total loans + September total loans) / 4 December reporting period - (Previous December total loans + March total loans + June total loans + September total loans + December total loans) / 5 Quarterly averages: All reporting periods  (Previous quarter total loans + current quarter total loans) / 2 "
+
+## not included-----
+## "19.","Cash dividends to net income (ytd only)*","iddivnir","Total of all cash dividends declared (year-to-date, annualized) as a percent of net income (year-to-date, annualized). * this ratio is not available on a quarterly basis. if the denominator is less than or equal to zero, then ratio is shown as 'N/A.' RIS definition = IDDIVNIR = (EQCDIVA / NETINCA) *100"
 
 
 
@@ -115,7 +117,18 @@ variables <- c("asset",# {{{
                "noniiay",
                "nonixay",
                "ELNATRY",
-               "roe"
+               "noijy",
+               "roa",
+               "roaptx",
+               "roe",
+               "ntlnlsr",
+               "elnantr",
+               "iderncvr",
+               "eeffr",
+               "astempm",
+               "ERNASTR",
+               "lnatresr",
+               
                )# }}}
 
 
