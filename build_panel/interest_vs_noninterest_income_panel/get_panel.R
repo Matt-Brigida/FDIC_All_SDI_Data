@@ -6,10 +6,6 @@ quarters <- list.dirs("../../merged_data/", full.names = FALSE)[-1]
 ## get rssds
 rssds <- data.table::fread("../getting_fed_rssds/all_fed_rssds.csv")
 
-## construct panel
-panel <- data.table()
-
-
 ## Variabels for panel:
 ## asset: Total Assets
 ## eq, "Total bank equity capital (includes preferred and common stock, surplus and undivided profits)."
@@ -146,23 +142,23 @@ variables <- c("asset",# {{{
                )# }}}
 
 
+## construct panel
+panel <- data.table()
 
 for (i in quarters){
     tmp_data <- fread(paste0("../../merged_data/", i, "/merged_data.csv"))
     for (j in rssds$rssd){
         if (j %in% tmp_data$fed_rssd){
             ## tmp_asset <- tmp_data[tmp_data$fed_rssd == j, ]$asset
-            tmp_vector <- c()
+            tmp_vector <- list()
             for (w in 1:length(variables)){
-                ## assign(paste0("tmp", w), eval(parse(text = paste0("tmp_data[tmp_data$fed_rssd == j, ]$", variables[w]))))
-                tmp_vector <- c(tmp_vector, eval(parse(text = paste0("tmp_data[tmp_data$fed_rssd == j, ]$", variables[w]))))
-                ## eval(parse(text = paste0("tmp", w))))
+                tmp_vector[[w]] <- ifelse(is.null(eval(parse(text = paste0("tmp_data[tmp_data$fed_rssd == j, ]$", variables[w])))), NA, eval(parse(text = paste0("tmp_data[tmp_data$fed_rssd == j, ]$", variables[w]))))
                 }
-            panel <- rbind(panel, list(i, j, tmp_vector), use.names=FALSE)
+            panel <- rbind(panel, do.call(c, list(i, j, tmp_vector)), use.names=FALSE)
         }
     }
 }
 
-names(panel) <- c("quarter", "rssd", "total_assets")
+names(panel) <- c("quarter", "rssd", variables)
 
-saveRDS(panel, "./panel_just_assets.rds")
+saveRDS(panel, "./panel.rds")
