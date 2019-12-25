@@ -25,12 +25,16 @@ for (i in 2:length(quarters)){
     births[[quarters[i]]] <- fed_rssds[[i]][!(fed_rssds[[i]] %in% fed_rssds[[i - 1]])]
 }
 
+saveRDS(births, "births.rds")
+
 ### deaths
 deaths <- list()
 
 for (i in 1:(length(quarters) - 1)){
     deaths[[quarters[i + 1]]] <- fed_rssds[[i]][!(fed_rssds[[i]] %in% fed_rssds[[i + 1]])]
 }
+
+saveRDS(deaths, "deaths.rds")
 
 ## Alternative method to get all fed_rssds, get all in first quarter and add all births-------
 alt_all_fed_rssds <- unique(c(read_csv("../../merged_data/19921231/bank_data.csv")$fed_rssd, unlist(births)))
