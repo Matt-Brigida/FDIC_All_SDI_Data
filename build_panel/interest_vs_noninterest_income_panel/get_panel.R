@@ -83,6 +83,7 @@ rssds <- data.table::fread("../getting_fed_rssds/all_fed_rssds.csv")
 ## "Salaries and employee benefits","esal","Salaries and employee benefits expense."
 ## "Net charge-offs","ntlnls","Total loans and leases charged-off (removed from balance sheet because of uncollectibility), less amounts recovered on loans and leases previously charged-off."
 ## "Net operating income","noij","Net income excluding discretionary transactions such as gains (losses) on the sale of investment securities and extraordinary items. Income taxes subtracted from operating income have been adjusted to exclude the portion applicable to securities gains (losses)."
+## "Restructured Loans & leases","rslnltot","Total loans and leases restructured and in compliance with modified terms. note: beginning march 2008, includes loans secured by 1-4 family residential properties for CALL report filers "
 
 
 
@@ -160,7 +161,9 @@ variables <- c("asset",# {{{
                "igltrad",
                "esal",
                "ntlnls",
-               "noij"               
+               "noij",
+               "eqcrest",
+               "rslnltot"
                )# }}}
 
 
@@ -183,4 +186,4 @@ for (i in quarters){
 
 names(panel) <- c("quarter", "rssd", variables)
 
-saveRDS(panel, "./panel.rds")
+saveRDS(panel, "./panel2.rds")
