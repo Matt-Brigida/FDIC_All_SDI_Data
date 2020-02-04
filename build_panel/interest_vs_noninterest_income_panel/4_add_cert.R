@@ -36,6 +36,15 @@ data_all <- merge(data_and_certs, fail_data, by = "cert", all.x = TRUE)
 
 ## create a failed indicator-----
 
+data_all$fail_indicator <- ifelse(is.na(data_all$fail_date), 0 , 1)
 
+## Time to failure
 
-## should we also create an variable which is time to failure?
+data_all$fail_date <- as.Date(data_all$fail_date, format = "%Y-%m-%d")
+
+data_all$quarter <- as.character(data_all$quarter)
+data_all$quarter <- as.Date(data_all$quarter, format = "%Y%m%d")
+
+data_all$days_to_failure <- data_all$fail_date - data_all$quarter
+
+saveRDS(data_all, "full_panel_with_failure_data.rds")
