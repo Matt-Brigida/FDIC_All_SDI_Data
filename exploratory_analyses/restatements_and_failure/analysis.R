@@ -43,6 +43,20 @@ sum(neg_restated_rssd_and_if_failed$fail_indicator) / dim(neg_restated_rssd_and_
 
 ### t-tests-----
 
+t.test(all_rssd_and_if_failed$fail_indicator, restated_rssd_and_if_failed$fail_indicator)
+
+## 	Welch Two Sample t-test
+
+## data:  all_rssd_and_if_failed$fail_indicator and restated_rssd_and_if_failed$fail_indicator
+## t = -2.7796, df = 10730, p-value = 0.005453
+## alternative hypothesis: true difference in means is not equal to 0
+## 95 percent confidence interval:
+##  -0.015238670 -0.002634347
+## sample estimates:
+##  mean of x  mean of y 
+## 0.04371156 0.05264807 
+
+
 t.test(all_rssd_and_if_failed$fail_indicator, neg_restated_rssd_and_if_failed$fail_indicator)
 ## 	Welch Two Sample t-test
 
