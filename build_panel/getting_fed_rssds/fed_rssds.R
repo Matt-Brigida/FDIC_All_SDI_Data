@@ -15,6 +15,10 @@ all_fed_rssds <- unique(unlist(fed_rssds))
 
 saveRDS(all_fed_rssds, "all_fed_rssds.rds")
 
+## column name in dataframe MUST be rssd, TODO fix------
+write_csv(data.frame(all_fed_rssds), "all_fed_rssds.csv")
+
+
 length(all_fed_rssds)
 #  16568
 
@@ -90,12 +94,12 @@ first_quarter_num_banks <- length(first_quarter$fed_rssd)
 ## 13973
 
 ## num banks last quarter
-last_quarter <- read_csv("../../merged_data/20190331/bank_data.csv")
+last_quarter <- read_csv("../../merged_data/20201231/bank_data.csv")
 last_quarter_num_banks <- length(last_quarter$fed_rssd)
-## 5371
+## 5125
 
 last_quarter_num_banks/first_quarter_num_banks - 1
-## -0.6156158
+## -0.6332212
 
 pdf("total_num_banks.pdf")
 plot.xts(first_quarter_num_banks + cumulative_net_gain, main="Total Number of US Banks")
